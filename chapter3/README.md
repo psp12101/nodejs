@@ -66,3 +66,29 @@
          cd chapter3
          node ref.js
 
+----
+
+#### 与模块相关的全局函数
+    1. 引入模块 var importModule = require('./exportModule.js'); // ./ 表示在当前目录下
+    2. if(module===require.main)   // 判断是不是主模块
+---
+    加载方法1
+    1. cd chapter3
+    2. node main.js
+    加载方法2
+    1. node  // 进入REPL
+    2. mymodule = require('./chapter3/exportModule.js')
+    或者 mymain = require('./chapter3/main.js')
+---
+    删除已加载的模块
+    delete require.cache[require.resolve('./chapter3/exportModule.js')];
+
+    请查看 exportModule.js 文件
+        模块加载的第一次,会运行一次test(100,200),后面的加载就不会再运行了,除非从缓冲中删除了,再次加载才会再次运行test(100,200)
+        mymodule = require('./chapter3/exportModule.js');  // 运行一次 test(100,200)
+        mymodule = require('./chapter3/exportModule.js');  // 不再运行 test(100,200)
+        delete require.cache[require.resolve('./chapter3/exportModule.js')];  // 删除了引入的模块
+        mymodule = require('./chapter3/exportModule.js');  // 再次运行一次 test(100,200)
+
+
+### __filename 和 __dirname
