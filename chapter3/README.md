@@ -91,4 +91,8 @@
         mymodule = require('./chapter3/exportModule.js');  // 再次运行一次 test(100,200)
 
 
-### __filename 和 __dirname
+### 3.3 __filename 和 __dirname
+
+### 3.4 事件处理机制及事件环机制 
+
+    3.4.1 相关代码 emitter.js
