@@ -3,11 +3,11 @@
 ![章节目录简介](http://www.denglm.com/images/backtotop.png)
 ### chapter1 helloworld 简单的入门nodejs 服务器程序
 
-[![NPM Version][npm-image]][npm-url]
-[![NPM Downloads][downloads-image]][downloads-url]
-[![Node.js Version][node-version-image]][node-version-url]
-[![Build Status][travis-image]][travis-url]
-[![Test Coverage][coveralls-image]][coveralls-url]
+[![NPM 版本][npm-image]][npm-url]
+[![NPM 下载][downloads-image]][downloads-url]
+[![Node.js 版本][node-version-image]][node-version-url]
+[![Build 状态][travis-image]][travis-url]
+[![Test 覆盖范围][coveralls-image]][coveralls-url]
 
 ---
 
