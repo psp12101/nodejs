@@ -1,5 +1,5 @@
 # nodejs
-![第二章节开始了](http://www.denglm.com/images/backtotop.png)
+![第三章节开始了](http://www.denglm.com/images/backtotop.png)
 ## chapter3 第三章节内容和代码
 
 ### nodejs 中的交互运行环境 REPL
@@ -96,3 +96,36 @@
 ### 3.4 事件处理机制及事件环机制 
 
     3.4.1 相关代码 emitter.js
+
+### 3.5 在node.js 使用调试器
+    
+    3.5.1 相关代码在debug.js 和 debug-extra.js 中
+
+    3.5.2 调试命令
+
+        1. node debug debug.js 进入调试debug.js
+        2. 继续执行 "cont" 或者 "c" (表示继续的意思 continue)
+        3. 执行下一下代码 "next" 或者 “n” (表示下一行的意思 next)
+        4. step 或者 s  进入函数内部一步一步地调试
+        5. out 或者 o  在进入函数内部调试时，立即执行完剩下的函数代码，跳出到外部调用函数的下一行代码
+        6. 监视变量的变化，比如监视str变量的变化,watch('str'), 记住要加单引号
+        7. 使用 watchers 命令查看所有有 watch 监控变量
+        8. 设置断点  setBreakpoint(filename,line)  或者 sb(filename,line), 省掉 filename 表示调试当前文件 例如：sb(5),在第5行设置断点
+        9. restart 重启调试(调试完了后，再来一次)
+        10.list 查看调试文件当前执行位置前后几行代码，比如list(20),但看当前位置处前后的20行代码
+        11.kill 中止脚本的调试
+        12.run 在中止后重新开始脚本调试
+        13.scripts 查看所有被加载的模块名
+        14.version 查看V8 JavaScript 引擎的版本
+        15.退出  .exit
+
+    3.5.5  使用浏览器来调试 node-inspector
+
+        1. npm install -g node-inspector
+        2. node --debug-brk debug.js    (也可以node --debug debug.js 这种是直接一次性在terminal 输出结果，在chrome 里面是看不到的)
+        3. 再打开一个新的terminal
+        4. 在新的terminal 中输入 node-inspector
+        5. 复制链接到chrome 中打开，就可以调试了
+        6. 如果打了多个断点，一个断点过后，再点“continue to here” 没有反应，因为代码暂停了，点一下 chrome 浏览器 Watch Expression 上面的 || 变成 |》就又可以调试了
+
+
