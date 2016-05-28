@@ -40,6 +40,7 @@
 	5. 模块对象的属性
 	6. 包与NPM 包管理工具
 
+### chapter5 nodejs Buffer 二进制
 
 [npm-image]: https://img.shields.io/npm/v/cookie.svg
 [npm-url]: https://npmjs.org/package/cookie
