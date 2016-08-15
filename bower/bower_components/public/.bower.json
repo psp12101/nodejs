@@ -1,0 +1,15 @@
+{
+  "name": "public",
+  "_cacheHeaders": {
+    "ETag": "\"c7e2fded417cd11:0\"",
+    "Last-Modified": "Sat, 12 Mar 2016 09:31:17 GMT",
+    "Content-Length": "3134",
+    "Content-Type": "application/javascript"
+  },
+  "_release": "e-tag:c7e2fded4",
+  "main": "index.js",
+  "_source": "http://www.denglm.com/js/public.js",
+  "_target": "*",
+  "_originalSource": "http://www.denglm.com/js/public.js",
+  "_direct": true
+}

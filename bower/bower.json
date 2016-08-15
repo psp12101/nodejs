@@ -1,0 +1,19 @@
+{
+  "name": "bower",
+  "homepage": "https://github.com/psp12101/nodejs",
+  "authors": [
+    "tony_deng <psp12101@qq.com>"
+  ],
+  "description": "my first bower package json file",
+  "main": "index.js",
+  "keywords": [
+    "haha"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "angular": "angularjs#^1.5.8",
+    "public": "http://www.denglm.com/js/public.js",
+    "zepto": "^1.1.6"
+  }
+}
