@@ -101,6 +101,7 @@
         // 默认任务, 合并文件, 压缩文件
         grunt.registerTask('default', ['concat','uglify']);
 
+    grunt concat
 
 ---
 ### 4. 自动检查文件改变 grunt-contrib-watch
@@ -177,5 +178,56 @@
         // 默认任务, 合并文件, 压缩文件
         grunt.registerTask('default', ['concat','uglify','both']);
     }
+
 ---
-### 5.
+### 5. jshint 检测文件中的js语法问题
+
+    1. 方法1: "grunt-contrib-jshint": "~0.6.3",
+    2. 方法2: npm install grunt-contrib-watch --save-dev
+
+    jshint:{
+                /**options: {
+                    '-W033': true           // 忽略分号的错误,不检查
+                },**/
+                all:['src/js/test1.js']
+           }
+
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
+    执行: grunt jshint
+
+---
+### 6. cssmin 打包样式文件
+
+    1. 方法1: "grunt-contrib-cssmin": "^1.0.1",
+    2. 方法2: npm install grunt-contrib-cssmin --save-dev
+
+    cssmin:{
+                compress:{
+                    files:{
+                        'dest/css/h.min.css':['src/css/h1.css','src/css/h2.css','src/css/h3.css']
+                    }
+                }
+            },
+
+    // 合并css 样式文件
+        grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+    执行: grunt cssmin
+
+### 7. copy 移动打包文件
+
+    1. 方法1: "grunt-contrib-copy": "^1.0.0",
+    2. 方法2: npm install grunt-contrib-copy --save-dev
+
+    copy:{
+                main:{
+                    //      flatten: true,
+                    //      expand: true,
+                    src:'dest/css/*.css',
+                    dest:'copyDest/'
+                }
+         },
+
+        // 移动文件 copy
+        grunt.loadNpmTasks('grunt-contrib-copy');
