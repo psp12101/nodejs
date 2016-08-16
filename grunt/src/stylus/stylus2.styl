@@ -1,0 +1,304 @@
+/**
+1.0 选择器 selectors  及父级选择器 &
+**/
+
+/**例子1:**/
+a
+  color:#345
+  &:hover
+    font-size:16px
+
+/**例子2:**/
+box-shadow()
+  -webkit-box-shadow arguments
+  -moz-box-shadow arguments
+  box-shadow arguments
+  html.ie8 &,
+  html.ie7 &,
+  html.ie6 &
+    border 2px solid arguments[length(arguments) - 1]
+
+body
+  #login
+    box-shadow 1px 1px 3px #eee
+
+/**
+2.0 负数(-n)和特殊属性值的处理unquote()
+**/
+
+/**例子1:**/
+pad(n)
+  padding (-n)
+
+body
+  pad(5px)
+
+/**例子2:**/
+h2
+  filter unquote('progid:DXImageTransform.Microsoft.BasicImage(rotation=1)')
+  color #f303ff
+
+/**
+3.0 变量及使用属性做为变量调用
+**/
+
+mySize = 16px
+myBorderW = 1px
+myBorderColor = #333
+myBorderStyle = solid
+
+h2
+  font-size mySize
+  border myBorderW myBorderStyle myBorderColor
+
+#logo
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 150px
+  height: 80px
+  margin-left: -(@width / 2)
+  margin-top: -(@height / 2)
+
+position()
+  position: arguments
+  z-index: 1 unless @z-index
+
+#logo
+  z-index: 20
+  position absolute
+
+#logo2
+  position absolute
+
+/**
+4.0 插值及拼接属性
+**/
+concat(prop,args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  {prop} args
+
+border-radius()
+  concat('border-radius',arguments)
+
+#myH2
+  concat('box-sizing','border-box')
+  border-radius 10px
+
+ul
+  for index in 1 2 3 4 5 6
+    li:nth-child({index})
+       width index*2px
+
+/**
+5.0 运算符
+**/
+
+add()
+  if (!0 == true)
+     1px
+  else
+     0px
+
+h2
+  border add()
+  font (15px/1.5);
+
+/**
+6.0 颜色操作 颜色亮，加；暗，则减; 旋转
+**/
+
+h3
+  color #444 + 50%
+  background-color #888 - 50%
+  border-color #f00 + 120deg
+  outline-color #f00 - rgba(100,0,0,0.5)
+
+/**
+7.0 混合书写(Mixins)
+**/
+
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+#myMixin
+  border-radius 5px
+
+/**
+8.0 函数方法
+**/
+
+add1(a,b)
+  a + b
+
+#myh1
+  padding add1(15px,12)
+
+add2(a,b=a)
+  a + b
+
+#myh2
+  padding add2(15px)
+
+add3(a,b = unit(a,px))
+  a + b
+
+#myh3
+  padding add3(15px,12)
+
+mult(a,b)
+  a * b
+
+add4(a,b = a)
+  a = mult(a,10)
+  b = mult(b,100)
+  a + b
+
+#myh4
+  padding add4(10px,10)
+
+add5(a,b=a)
+  a*10 b*10
+
+#myh5
+  padding add5(10px,5px)[0]
+  margin add5(10px,5px)[1]
+
+mult6(a,b)
+  a * b
+
+add6(a,b = a,fn)
+  a = fn(a,b)
+  return a
+
+#myh6
+  padding add6(10px,5px,mult6)
+
+add7()
+  sum = 0
+  for num in arguments
+     sum += num
+  (sum)
+
+#myh7
+  padding add7(1px,2px,3px)
+
+/**
+9.0 关键字
+**/
+
+#myh8
+  color rgba(255, 200, 100, 0.5)
+  background-color rgba(red: 255, green: 200, blue: 100, alpha: 0.5)
+  outline-color rgba(alpha: 0.5, blue: 100, red: 255, 200)
+  border-color rgba(alpha: 0.5, blue: 100, 255, 200)
+
+/**
+10.0 内置方法颜色处理
+**/
+ratio1 = red(#f00)
+ratio2 = green(#0a0)
+ratio3 = blue(#008)
+ratio4 = alpha(rgba(125,125,125,0.8))
+value1 = lightness(hsl(50deg, 100%, 80%))
+value2 = saturation(hsl(50deg, 100%, 80%))
+
+#myh9
+  width abs(-12px)
+  height ceil(5.5px)
+  border-width floor(1.1px)
+  margin round(5.6px) round(5.4px)
+  padding min(2px,3px) max(4px,5px)
+  left avg(10px 20px 30px)
+  top sum(10px 20px 30px)
+  box-shadow ratio1 ratio2 ratio3 ratio4 value1 value2
+  background-position opposite-position(left top)
+
+
+/**
+11.0 arguments
+**/
+box-shadow()
+  -webkit-box-shadow arguments
+  -moz-box-shadow arguments
+  box-shadow arguments
+
+#myh10
+  box-shadow #ddd 1px 1px, #eee 2px 2px
+
+/**
+12.0 条件语句 if / else if / else / unless
+**/
+overload-padding = true
+
+if overload-padding
+  padding(x, y)
+    margin y x
+
+#myh11
+  padding 5px 10px
+
+disable-padding-override = true
+unless disable-padding-override
+  padding(x, y)
+    margin y x
+
+#myh12
+  padding 5px 10px
+
+/**
+13.0 keyframe
+**/
+
+@keyframes foo {
+  from {
+    color: black
+  }
+  to {
+    color: white
+  }
+}
+
+/**
+14.0 extend
+**/
+
+red = #E33E1E
+yellow = #E2E21E
+
+.message
+  margin 10px
+  font 14px Helvetica
+  border 1px solid #eee
+  top unit(15%,'px')
+
+.warning
+  @extends .message
+  border-color: yellow
+  background: yellow + 70%
+
+.error
+  @extends .message
+  border-color: red
+  background: red + 70%
+
+.fatal
+  @extends .error
+  font-weight: bold
+  color: red
+
+something(n)
+  if current-property
+    add-property(current-property[0], s('-webkit-something(%s)', n))
+    add-property(current-property[0], s('-moz-something(%s)', n))
+    s('something(%s)', n)
+  else
+    error('something() must be used within a property')
+
+body {
+  foo: something(15px) bar;
+}
+

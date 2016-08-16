@@ -20,11 +20,11 @@ module.exports = function (grunt) {
             js:{
                 files:['src/concat/concat1.js', 'src/concat/concat2.js', 'src/concat/concat3.js'],
                 //tasks:['concat:js']
-                tasks:['concat']
+                tasks:['concat','uglify']
             },
             css:{
                 files:['src/css/test1.css', 'src/css/test2.css', 'src/css/test3.css'],
-                tasks:['concat']
+                tasks:['concat','cssmin']
             }
         },
         jshint:{
@@ -40,6 +40,14 @@ module.exports = function (grunt) {
                 }
             }
         },
+        stylus: {
+            compile: {
+                files: {
+                    'dest/css/stylusFromExample.css': 'src/stylus/example.styl', // 1:1 compile
+                    'dest/css/stylusFromStylus1to3.css': ['src/stylus/stylus1.styl','src/stylus/stylus2.styl','src/stylus/stylus3.styl'] // compile and concat into single file
+                }
+            }
+        },
         copy:{
             main:{
                 //      flatten: true,
@@ -50,6 +58,7 @@ module.exports = function (grunt) {
         },
         uglify: {
             options: {
+                // manage:false,       // 设置成false 意指不要修改变量名和函数名
                 banner: '/*! <%= pkg.file %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
@@ -74,6 +83,9 @@ module.exports = function (grunt) {
     // 合并css 样式文件
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
+    // stylus 生成 css 样式文件
+    grunt.loadNpmTasks('grunt-contrib-stylus');
+
     // 移动文件 copy
     grunt.loadNpmTasks('grunt-contrib-copy');
 
@@ -91,5 +103,5 @@ module.exports = function (grunt) {
     grunt.registerTask('both',['speak','talk']);
 
     // 默认任务, 合并文件, 压缩文件, 监视文件, 自定义文件
-    grunt.registerTask('default', ['concat','uglify','jshint','cssmin','copy','watch','both']);
+    grunt.registerTask('default', ['concat','uglify','jshint','cssmin','stylus','copy','watch','both']);
 };

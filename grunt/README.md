@@ -72,7 +72,9 @@
     然后运行: grunt
 
 ---
-### 3. 合并文件
+### 3. 合并文件 concat
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-concat
 
     合并文件依赖于grunt-contrib-concat插件，
     方法1: 在package 依赖项要新增一项: "grunt-contrib-concat": "^1.0.1",
@@ -105,6 +107,8 @@
 
 ---
 ### 4. 自动检查文件改变 grunt-contrib-watch
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-watch
 
     方法1:
     "grunt-contrib-watch": "^1.0.0",
@@ -182,6 +186,8 @@
 ---
 ### 5. jshint 检测文件中的js语法问题
 
+    参考链接: https://www.npmjs.com/package/grunt-contrib-jshint
+
     1. 方法1: "grunt-contrib-jshint": "~0.6.3",
     2. 方法2: npm install grunt-contrib-watch --save-dev
 
@@ -197,7 +203,10 @@
     执行: grunt jshint
 
 ---
-### 6. cssmin 打包样式文件
+### 6. cssmin 打包压缩样式文件
+
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-cssmin
 
     1. 方法1: "grunt-contrib-cssmin": "^1.0.1",
     2. 方法2: npm install grunt-contrib-cssmin --save-dev
@@ -210,12 +219,42 @@
                 }
             },
 
+    3. 源文件和目标文件的配置
+    cssmin:{
+                compress:{
+                    files:[{
+                        expand:true,
+                        cwd:'css/',
+                        src:['*.css','!*.min.css'],    // 源文件
+                        dest:'css/',                   // 目标文件
+                        ext:'.min.css'                 // 文件扩展名
+                    }]
+                }
+            },
+
     // 合并css 样式文件
         grunt.loadNpmTasks('grunt-contrib-cssmin');
 
+
     执行: grunt cssmin
 
-### 7. copy 移动打包文件
+####6.2 grunt-uncss 去除不用样式
+
+    参考链接: https://www.npmjs.com/package/grunt-uncss
+    工作原理: 有一个非常大的样式文件 max.css, 有一个页面叫index.html,
+             index.html 用到了max.css 的样式(只用到了样式里面的一部分,比如30%的选择器),这个时候如果把样式原样不动的加载进来是很不
+             合算的,所以可以想办法去max.css 进行处理,只保留max.css 里面index.html 用到时的样式选择器, grunt-uncss
+             就是干这个的;
+
+
+### 7. grunt-contrib-csslint  样式检查
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-csslint
+
+
+### 8. copy 移动打包文件
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-copy
 
     1. 方法1: "grunt-contrib-copy": "^1.0.0",
     2. 方法2: npm install grunt-contrib-copy --save-dev
@@ -231,3 +270,35 @@
 
         // 移动文件 copy
         grunt.loadNpmTasks('grunt-contrib-copy');
+
+### 9. stylus to css 编译
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-stylus
+
+    1. 方法1: "grunt-contrib-stylus": "^1.2.0",
+    2. 方法2: npm install grunt-contrib-stylus --save-dev
+
+### 10. 删除文件和文件夹操作 grunt-contrib-clean
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-clean
+
+### 11. 压缩文件 压缩成 zip 或者 gzip
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-compress
+
+### 12. 创建一个 grunt 服务器
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-connect
+
+### 13. html 页面组装器 grunt-contrib-html-build
+
+    附加脚本和样式文件, 清除 debug 部分, 添加 html 片段 html partials, Template options
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-html-build
+
+### 14. 压缩图片 grunt-contrib-imagemin
+
+    参考链接: https://www.npmjs.com/package/grunt-contrib-imagemin
+
+    npm install grunt-contrib-imagemin --save-dev
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
