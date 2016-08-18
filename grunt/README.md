@@ -14,6 +14,7 @@
 
 ##### 2.1 创建一个 grunt 文件夹
 ##### 2.2 在grunt 文件夹里面创建一个 package.json 文件,内容如下:
+
     可以用 npm init 创建
 
     也可以直接创建一个在根目录
@@ -302,3 +303,42 @@
 
     npm install grunt-contrib-imagemin --save-dev
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+
+### 15. grunt-remove-logging  清除掉所有的 console logging 语句
+
+    npm install grunt-remove-logging
+    grunt.loadNpmTasks("grunt-remove-logging");
+    参考链接: https://www.npmjs.com/package/grunt-remove-logging
+
+### 16. grunt-ngmin  用来压缩Angularjs 项目的
+
+    npm install grunt-ngmin --save-dev
+    grunt.loadNpmTasks('grunt-ngmin');
+    参考链接: https://www.npmjs.com/package/grunt-ngmin
+
+### 17. grunt-newer 只对上次处理成功之后再有修改的文件做处理操作
+
+    npm install grunt-newer --save-dev
+    grunt.loadNpmTasks('grunt-newer');
+    参考链接: https://www.npmjs.com/package/grunt-newer
+
+### 18. grunt-bowercopy 精细管理bower dependencies的文件路径
+
+    npm install grunt-bowercopy --save-dev
+    grunt.loadNpmTasks('grunt-bowercopy');
+
+    参考链接: https://www.npmjs.com/package/grunt-bowercopy
+
+### 19. grunt-ng-constant 用于动态生成 angular constant modules
+
+    npm install grunt-ng-constant --save-dev
+    grunt.loadNpmTasks('grunt-ng-constant');
+    参考链接: https://www.npmjs.com/package/grunt-ng-constant
+
+### 20. grunt-version 项目版本管理
+
+    npm install grunt-version --save-dev
+    grunt.loadNpmTasks('grunt-version');
+    参考链接: https://www.npmjs.com/package/grunt-version
+
+[![NPM 下载][downloads-image]][https://www.npmjs.com/package/grunt-version]
